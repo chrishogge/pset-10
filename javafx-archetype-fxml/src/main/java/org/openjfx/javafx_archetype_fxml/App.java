@@ -1,6 +1,9 @@
 package org.openjfx.javafx_archetype_fxml;
 
 import javafx.application.Application;
+
+import java.io.File;
+import java.net.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -48,7 +51,10 @@ public class App extends Application {
             setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
-                    webview.getEngine().load(BOOTSTRAP_PREFIX + anchor.toString());
+                	File homePage = new File("html/home.html");
+                	System.out.println("file://" + homePage.toURI().toString().substring(5));
+                    webview.getEngine().load("file://" + homePage.toURI().toString().substring(5));
+                    System.out.println("loading");
                 }
             });
         }
